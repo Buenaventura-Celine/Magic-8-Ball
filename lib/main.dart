@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +23,14 @@ class BallPage extends StatefulWidget {
 }
 
 class _BallPageState extends State<BallPage> {
+  int ballNumber = 1;
+
+  void rollBallNumber() {
+    setState(() {
+      ballNumber = Random().nextInt(5) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -29,9 +38,9 @@ class _BallPageState extends State<BallPage> {
         child: Expanded(
           child: TextButton(
             onPressed: () {
-              print('Magic 8 ball was pressed');
+              rollBallNumber();
             },
-            child: Image.asset('images/ball1.png'),
+            child: Image.asset('images/ball$ballNumber.png'),
           ),
         ),
       ),
